@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>S R | The Events Company</title>
+</head>
+<body>
+<form>
+                                                               
+                                    <div class="row">
+
+                                        <div class="col">
+                                            
+					                                            <div class="form-group">
+					                                                <label>STATE</label>
+					                                                <select class="form-dropdown form-control" name="category"   style="width:250px;" data-component="dropdown" required="">
+            <option value="none" > Select Category </option>
+            <%
+            Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
+            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","srk","sunnyrk");
+            Statement stmt=con.createStatement();
+            
+           
+            ResultSet rs9=stmt.executeQuery("select * from event_type ");
+            while(rs9.next()){
+            %>
+            <option value="<%=rs9.getInt("event_id")%>"><%=rs9.getString("event_name")%></option>
+            <%
+            }           
+            %>
+              
+          </select>  </div>
+			                                            </div>
+			                                        </div>
+	                                        
+                                  
+                                      
+									               <div class="row">
+                                                       <div class="col">
+				                                            <div class="form-group">
+				                                                <label >CITY</label>
+				                                                <input type="text" class="form-control" placeholder="City" required>
+				                                            </div>
+				                                        </div>
+				                                    </div>
+
+				                                    <div class="row">
+				                                        <div class="col">
+				                                            <div class="form-group">
+				                                                <label>HALL NAME</label>
+				                                                <input type="text" class="form-control" placeholder=" Hall Name" required>
+				                                            </div>
+				                                        </div>
+				                                        
+				                                    </div>
+				                                    <div class="row">
+				                                        <div class="col">
+				                                            <div class="form-group">
+				                                                <label>AMOUNT</label>
+				                                                <input type="text" class="form-control" placeholder=" Hall Name" required>
+				                                            </div>
+				                                        </div>
+				                                        
+				                                    </div>
+				                                    <div class="row">
+				                                        <div class="col">
+				                                            <div class="form-group">
+				                                                <label>CAPACITY</label>
+				                                                <input type="text" class="form-control" placeholder=" Hall Name" required>
+				                                            </div>
+				                                        </div>
+				                                        
+				                                    </div>
+
+                                 
+                                    <button type="submit" class="btn btn-success"   style="margin-left:20px;">Add Hall</button>
+                                 
+                                    <div class="clearfix"></div>
+                                   
+
+                                    </form>
+
+</body>
+</html>
